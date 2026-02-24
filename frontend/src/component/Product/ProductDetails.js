@@ -1,26 +1,26 @@
-import React, { Fragment, useEffect, useState } from "react";
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+} from "@material-ui/core";
+import { Rating } from "@material-ui/lab";
+import { Fragment, useEffect, useState } from "react";
+import { useAlert } from "react-alert";
 import Carousel from "react-material-ui-carousel";
-import "./ProductDetails.css";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { addItemsToCart } from "../../actions/cartAction";
 import {
   clearErrors,
   getProductDetails,
   newReview,
 } from "../../actions/productAction";
-import ReviewCard from "./ReviewCard.js";
-import Loader from "../layout/Loader/Loader";
-import { useAlert } from "react-alert";
-import MetaData from "../layout/MetaData";
-import { addItemsToCart } from "../../actions/cartAction";
-import {
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  Button,
-} from "@material-ui/core";
-import { Rating } from "@material-ui/lab";
 import { NEW_REVIEW_RESET } from "../../constants/productConstants";
+import Loader from "../layout/Loader/Loader";
+import MetaData from "../layout/MetaData";
+import "./ProductDetails.css";
+import ReviewCard from "./ReviewCard.js";
 
 const ProductDetails = ({ match }) => {
   const dispatch = useDispatch();
@@ -138,7 +138,9 @@ const ProductDetails = ({ match }) => {
                 <div className="detailsBlock-3-1">
                   <div className="detailsBlock-3-1-1">
                     <button onClick={decreaseQuantity}>-</button>
-                    <input readOnly type="number" value={quantity} />
+                    <span className="qtyValue" aria-label={`Quantity ${quantity}`}>
+                      {quantity}
+                    </span>
                     <button onClick={increaseQuantity}>+</button>
                   </div>
                   <button

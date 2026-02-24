@@ -4,20 +4,27 @@
 }
 
 body {
-  cursor: url("./images/cursor.png"), auto;
+  /* cursor: url("./images/cursor.png"), auto; */
+  /* overflow-x: hidden; */
 }
-
+/* .pageContent {
+  margin-top: 80px !important;
+} */
+.mainContent {
+  min-height: calc(100vh - 140px); /* adjust based on header + footer */
+   padding-top: 65px; /* header height */
+}
 /* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
+/* input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
 /* Firefox */
-input[type="number"] {
+/* input[type="number"] {
   -moz-appearance: textfield;
-}
+} */ */
 
 .greenColor {
   color: green !important;

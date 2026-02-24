@@ -1,11 +1,11 @@
-import React, { Fragment } from "react";
-import "./Cart.css";
-import CartItemCard from "./CartItemCard";
-import { useSelector, useDispatch } from "react-redux";
-import { addItemsToCart, removeItemsFromCart } from "../../actions/cartAction";
 import { Typography } from "@material-ui/core";
 import RemoveShoppingCartIcon from "@material-ui/icons/RemoveShoppingCart";
+import { Fragment } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { addItemsToCart, removeItemsFromCart } from "../../actions/cartAction";
+import "./Cart.css";
+import CartItemCard from "./CartItemCard";
 
 const Cart = ({ history }) => {
   const dispatch = useDispatch();
@@ -65,7 +65,9 @@ const Cart = ({ history }) => {
                     >
                       -
                     </button>
-                    <input type="number" value={item.quantity} readOnly />
+                    <span className="qtyValue" aria-label={`Quantity ${item.quantity}`}>
+                      {item.quantity}
+                    </span>
                     <button
                       onClick={() =>
                         increaseQuantity(
@@ -78,9 +80,8 @@ const Cart = ({ history }) => {
                       +
                     </button>
                   </div>
-                  <p className="cartSubtotal">{`₹${
-                    item.price * item.quantity
-                  }`}</p>
+                  <p className="cartSubtotal">{`₹${item.price * item.quantity
+                    }`}</p>
                 </div>
               ))}
 

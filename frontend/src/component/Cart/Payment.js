@@ -1,23 +1,23 @@
-import React, { Fragment, useEffect, useRef } from "react";
-import CheckoutSteps from "../Cart/CheckoutSteps";
-import { useSelector, useDispatch } from "react-redux";
-import MetaData from "../layout/MetaData";
 import { Typography } from "@material-ui/core";
-import { useAlert } from "react-alert";
 import {
-  CardNumberElement,
   CardCvcElement,
   CardExpiryElement,
-  useStripe,
+  CardNumberElement,
   useElements,
+  useStripe,
 } from "@stripe/react-stripe-js";
+import { Fragment, useEffect, useRef } from "react";
+import { useAlert } from "react-alert";
+import { useDispatch, useSelector } from "react-redux";
+import CheckoutSteps from "../Cart/CheckoutSteps";
+import MetaData from "../layout/MetaData";
 
-import axios from "axios";
-import "./payment.css";
 import CreditCardIcon from "@material-ui/icons/CreditCard";
 import EventIcon from "@material-ui/icons/Event";
 import VpnKeyIcon from "@material-ui/icons/VpnKey";
-import { createOrder, clearErrors } from "../../actions/orderAction";
+import axios from "axios";
+import { clearErrors, createOrder } from "../../actions/orderAction";
+import "./payment.css";
 
 const Payment = ({ history }) => {
   const orderInfo = JSON.parse(sessionStorage.getItem("orderInfo"));

@@ -1,17 +1,23 @@
 .banner {
   background-image: url("../../images/home-bg.jpg");
-  background-position: center;
+  /* background-position: center; */
   background-repeat: no-repeat;
   background-size: cover;
-  height: 100vmin;
+
+  /* ✅ Full screen below header */
+  height: calc(100vh);   /* change 80px to your header height */
+  min-height: 520px;
+
   display: flex;
   flex-direction: column;
   text-align: center;
   align-items: center;
   justify-content: center;
   color: white;
-}
 
+  position: relative; /* needed if you keep ::after */
+  overflow: hidden;
+}
 .banner > h1 {
   margin: 5vmax;
 
@@ -40,16 +46,19 @@
 
 .banner::after {
   content: "";
-  width: 100vw;
-  height: 100vmin;
-  background-color: #ffffff;
   position: absolute;
-  top: 0%;
   left: 0;
-  clip-path: polygon(100% 68%, 0 100%, 100% 100%);
-  max-width: 100%;
-}
+  bottom: -1px;
 
+  width: 100%;
+  height: 140px;
+
+  background: #fff;
+  clip-path: polygon(0 100%, 100% 70%, 100% 100%, 0 100%);
+}
+.homeHeading {
+  margin-top: 3rem;
+}
 .homeHeading {
   text-align: center;
   font-family: Roboto;
@@ -135,4 +144,171 @@
     margin: 0 0.5vmax;
     font: 300 1vmax "Roboto";
   }
+}
+
+.banner {
+  /* Full screen hero */
+  height: 100vh;
+  min-height: 520px;
+
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+
+  /* Premium layered background (no image needed) */
+  background:
+    radial-gradient(1200px 700px at 15% 65%, rgba(167, 88, 255, 0.55) 0%, rgba(167, 88, 255, 0) 60%),
+    radial-gradient(900px 600px at 85% 75%, rgba(98, 85, 255, 0.45) 0%, rgba(98, 85, 255, 0) 55%),
+    radial-gradient(800px 500px at 70% 15%, rgba(255, 90, 210, 0.18) 0%, rgba(255, 90, 210, 0) 60%),
+    linear-gradient(180deg, #0b0f1a 0%, #111a2b 55%, #0b0f1a 100%);
+
+  /* smoother text */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* soft dark overlay so text always pops */
+.banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(900px 420px at 50% 45%, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.65) 70%),
+    linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.35));
+  z-index: 1;
+}
+
+/* floating blobs (adds depth) */
+.banner .blob {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(18px);
+  opacity: 0.55;
+  z-index: 0;
+  transform: translate3d(0,0,0);
+  animation: floaty 10s ease-in-out infinite;
+}
+
+.banner .blob.b1 {
+  width: 520px;
+  height: 520px;
+  left: -140px;
+  bottom: -140px;
+  background: radial-gradient(circle at 30% 30%, rgba(170, 90, 255, 0.95), rgba(170, 90, 255, 0.15));
+  animation-duration: 12s;
+}
+
+.banner .blob.b2 {
+  width: 380px;
+  height: 380px;
+  right: -120px;
+  bottom: 40px;
+  background: radial-gradient(circle at 30% 30%, rgba(90, 115, 255, 0.90), rgba(90, 115, 255, 0.12));
+  animation-duration: 14s;
+}
+
+.banner .blob.b3 {
+  width: 320px;
+  height: 320px;
+  right: 15%;
+  top: -140px;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 90, 210, 0.55), rgba(255, 90, 210, 0.08));
+  animation-duration: 16s;
+}
+
+/* subtle noise layer (makes it look “designed”) */
+.banner .noise {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.08;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E");
+}
+
+/* make sure your content sits above overlays */
+.banner > p,
+.banner > h1,
+.banner > a {
+  position: relative;
+  z-index: 3;
+}
+
+.banner > p {
+  font: 400 1.1vmax "Lucida Sans";
+  letter-spacing: 0.06em;
+  opacity: 0.9;
+  margin-bottom: 0.8rem;
+  text-shadow: 0 10px 30px rgba(0,0,0,0.55);
+}
+
+.banner > h1 {
+  margin: 0;
+  font: 800 3.1vmax "Roboto";
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  text-shadow: 0 18px 40px rgba(0,0,0,0.65);
+  max-width: 980px;
+  line-height: 1.08;
+}
+
+.banner > a > button {
+  margin-top: 2.2rem;
+  cursor: pointer;
+
+  border: 1px solid rgba(255,255,255,0.28);
+  border-radius: 12px;
+
+  padding: 0.9rem 1.3rem;
+  width: auto;
+
+  font: 600 0.95rem "Roboto";
+  color: white;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(10px);
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.35),
+    inset 0 1px 0 rgba(255,255,255,0.10);
+
+  transition: transform 0.2s ease, background 0.2s ease, border 0.2s ease;
+}
+
+.banner > a > button:hover {
+  transform: translateY(-2px);
+  background: rgba(255,255,255,0.14);
+  border-color: rgba(255,255,255,0.42);
+}
+
+/* keep your white wave transition into product section */
+.banner::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+
+  width: 100%;
+  height: 140px;
+
+  background: #fff;
+  clip-path: polygon(0 100%, 100% 70%, 100% 100%, 0 100%);
+  z-index: 4;
+}
+
+@keyframes floaty {
+  0%   { transform: translate(0px, 0px) scale(1); }
+  50%  { transform: translate(18px, -14px) scale(1.03); }
+  100% { transform: translate(0px, 0px) scale(1); }
+}
+
+/* mobile tweaks */
+@media (max-width: 600px) {
+  .banner > p { font-size: 14px; }
+  .banner > h1 { font-size: 28px; padding: 0 16px; }
 }

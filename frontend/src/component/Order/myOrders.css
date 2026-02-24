@@ -2,6 +2,7 @@
   width: 100vw;
   max-width: 100%;
   padding: 0 7vmax;
+  margin-top: 65px;
   box-sizing: border-box;
   background-color: rgb(235, 235, 235);
   position: fixed;

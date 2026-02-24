@@ -9,12 +9,11 @@ const Footer = () => {
         <p>Lokesh Khandelwal</p>
         <img src={playStore} alt="playstore" />
       </div>
-
       <div className="midFooter">
         <h1>iStore</h1>
         <p>High Quality is our first priority</p>
 
-        <p>Copyrights 2024 &copy; lokesh1911e</p>
+        <p>Copyrights 2024 &copy;lokesh1911e</p>
       </div>
 
       <div className="rightFooter">

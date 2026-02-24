@@ -1,6 +1,6 @@
-import React, { Fragment, useEffect } from "react";
+import { Fragment, useEffect } from "react";
 import { useAlert } from "react-alert";
-import { CgMouse } from "react-icons/all";
+import { CgMouse } from "react-icons/cg";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, getProduct } from "../../actions/productAction";
 import Loader from "../layout/Loader/Loader";
@@ -30,6 +30,10 @@ const Home = () => {
           <MetaData title="iStore" />
 
           <div className="banner">
+            <span className="blob b1" />
+            <span className="blob b2" />
+            <span className="blob b3" />
+            <span className="noise" />
             <p>Welcome to iStore</p>
             <h1>FIND AMAZING PRODUCTS JUST BELOW</h1>
 
